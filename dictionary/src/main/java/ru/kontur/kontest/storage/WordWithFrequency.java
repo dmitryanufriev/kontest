@@ -1,4 +1,4 @@
-package ru.kontur.kontest.dictionary;
+package ru.kontur.kontest.storage;
 
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 

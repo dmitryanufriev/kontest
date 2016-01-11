@@ -1,4 +1,4 @@
-package ru.kontur.kontest.dictionary;
+package ru.kontur.kontest.storage;
 
 import static org.junit.Assert.*;
 
