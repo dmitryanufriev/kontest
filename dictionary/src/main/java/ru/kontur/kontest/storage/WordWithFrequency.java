@@ -2,8 +2,8 @@ package ru.kontur.kontest.storage;
 
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
-	private String word;
-	private int frequency;
+	private final String word;
+	private final int frequency;
 
 	public WordWithFrequency(String word, int frequency) {
 		this.word = word;
