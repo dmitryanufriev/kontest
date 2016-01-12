@@ -11,13 +11,13 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 	}
 
 	public int compareTo(WordWithFrequency wordWithFrequency) {
-		int comparisonResult = wordWithFrequency.frequency - frequency;
+		int frequenciesComparisonResult = wordWithFrequency.frequency - frequency;
 		
-		if (comparisonResult == 0) { // Частоты одинаковые, сравниваем слова
+		if (frequenciesComparisonResult == 0) { // Частоты одинаковые, сравниваем слова
 			return word.compareTo(wordWithFrequency.word);
 		}
 		
-		return comparisonResult;
+		return frequenciesComparisonResult;
 	}
 
 	@Override
