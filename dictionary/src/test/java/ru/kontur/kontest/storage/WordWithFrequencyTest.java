@@ -37,4 +37,14 @@ public class WordWithFrequencyTest {
 		
 		assertArrayEquals(new WordWithFrequency[] { b, a },  words);
 	}
+	
+	@Test
+	public void wordsWithSameFrequencyShouldBeComparedInNaturalOrder() {
+		WordWithFrequency a = new WordWithFrequency("A", HIGHER_FREQUENCY);
+		WordWithFrequency b = new WordWithFrequency("B", HIGHER_FREQUENCY);
+		
+		String msg = "Слово \"A\" с частотой " + HIGHER_FREQUENCY + " должно быть меньше слова \"B\" с частотой " + HIGHER_FREQUENCY;
+		
+		assertSame(msg, a.compareTo(b), "A".compareTo("B"));
+	}
 }
