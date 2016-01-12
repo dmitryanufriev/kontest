@@ -15,7 +15,7 @@ public class WordWithFrequencyTest {
 	public void wordWithHigherFrequencyShouldBeLessThanWordWithFewerFrequency() {
 		WordWithFrequency wordWithFrequency = new WordWithFrequency("a", HIGHER_FREQUENCY);
 		
-		String msg = "Word with frequency " + HIGHER_FREQUENCY + " should be less than word with frequency " + FEWER_FREQUENCY;
+		String msg = "Слово с частотой " + HIGHER_FREQUENCY + " должно быть меньше, чем слово с частотой " + FEWER_FREQUENCY;
 		assertTrue(msg, wordWithFrequency.compareTo(new WordWithFrequency("a", FEWER_FREQUENCY)) < 0);
 	}
 	
@@ -23,7 +23,7 @@ public class WordWithFrequencyTest {
 	public void wordWithFewerFrequencyShouldBeGreaterThanWordWithHigherFrequency() {
 		WordWithFrequency wordWithFrequency = new WordWithFrequency("a", FEWER_FREQUENCY);
 		
-		String msg = "Word with frequency " + FEWER_FREQUENCY + " should be greater than word with frequency " + HIGHER_FREQUENCY;
+		String msg = "Слово с частотой " + FEWER_FREQUENCY + " должно быть больше, чем слово с частотой " + HIGHER_FREQUENCY;
 		assertTrue(msg, wordWithFrequency.compareTo(new WordWithFrequency("a", HIGHER_FREQUENCY)) > 0);
 	}
 	
