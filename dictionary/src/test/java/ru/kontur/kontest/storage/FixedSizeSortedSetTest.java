@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
-public class FixedSizeSortedSetForWordWithFrequencyTest {
+public class FixedSizeSortedSetTest {
 	
 	private WordWithFrequency a;
 	private WordWithFrequency b;
@@ -16,7 +16,7 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 	private WordWithFrequency h;
 	private WordWithFrequency i;
 	private WordWithFrequency j;
-	private FixedSizeSortedSetForWordWithFrequency set;
+	private FixedSizeSortedSet<WordWithFrequency> set;
 
 	@Before
 	public void setUp() {
@@ -31,7 +31,7 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 		i = new WordWithFrequency("i", 2);
 		j = new WordWithFrequency("j", 10);
 		
-		set = new FixedSizeSortedSetForWordWithFrequency(10);
+		set = new FixedSizeSortedSet<WordWithFrequency>(10);
 		
 		for (WordWithFrequency wordWithFrequency : new WordWithFrequency[] { a, b, c, d, e, f, g, h, i, j }) {
 			set.add(wordWithFrequency);
