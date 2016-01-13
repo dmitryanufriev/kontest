@@ -3,12 +3,12 @@ package ru.kontur.kontest.storage;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class FixedSizeSortedSet<T> {
+public class FixedSizeSortedList<T> {
 
 	private final SortedSet<T> sortedSet;
 	private final int size;
 	
-	public FixedSizeSortedSet(int size) {
+	public FixedSizeSortedList(int size) {
 		this.size = size;
 		this.sortedSet = new TreeSet<T>();
 	}
