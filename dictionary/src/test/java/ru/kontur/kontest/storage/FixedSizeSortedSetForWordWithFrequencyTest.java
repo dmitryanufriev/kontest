@@ -6,18 +6,33 @@ import org.junit.*;
 
 public class FixedSizeSortedSetForWordWithFrequencyTest {
 	
+	private WordWithFrequency a;
+	private WordWithFrequency b;
+	private WordWithFrequency c;
+	private WordWithFrequency d;
+	private WordWithFrequency e;
+	private WordWithFrequency f;
+	private WordWithFrequency g;
+	private WordWithFrequency h;
+	private WordWithFrequency i;
+	private WordWithFrequency j;
+
+	@Before
+	public void setUp() {
+		a = new WordWithFrequency("a", 1);
+		b = new WordWithFrequency("b", 9);
+		c = new WordWithFrequency("c", 8);
+		d = new WordWithFrequency("d", 7);
+		e = new WordWithFrequency("e", 6);
+		f = new WordWithFrequency("f", 5);
+		g = new WordWithFrequency("g", 7);
+		h = new WordWithFrequency("h", 3);
+		i = new WordWithFrequency("i", 2);
+		j = new WordWithFrequency("j", 10);
+	}
+	
 	@Test
 	public void wordsWithFrequenciesShouldBeAddedInSortOrder() {
-		WordWithFrequency a = new WordWithFrequency("a", 1);
-		WordWithFrequency b = new WordWithFrequency("b", 9);
-		WordWithFrequency c = new WordWithFrequency("c", 8);
-		WordWithFrequency d = new WordWithFrequency("d", 7);
-		WordWithFrequency e = new WordWithFrequency("e", 6);
-		WordWithFrequency f = new WordWithFrequency("f", 5);
-		WordWithFrequency g = new WordWithFrequency("g", 7);
-		WordWithFrequency h = new WordWithFrequency("h", 3);
-		WordWithFrequency i = new WordWithFrequency("i", 2);
-		WordWithFrequency j = new WordWithFrequency("j", 10);
 		
 		FixedSizeSortedSetForWordWithFrequency set = new FixedSizeSortedSetForWordWithFrequency(10);
 		
@@ -30,16 +45,6 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 	
 	@Test
 	public void sortedSetShouldBeFixedSize() {
-		WordWithFrequency a = new WordWithFrequency("a", 1);
-		WordWithFrequency b = new WordWithFrequency("b", 9);
-		WordWithFrequency c = new WordWithFrequency("c", 8);
-		WordWithFrequency d = new WordWithFrequency("d", 7);
-		WordWithFrequency e = new WordWithFrequency("e", 6);
-		WordWithFrequency f = new WordWithFrequency("f", 5);
-		WordWithFrequency g = new WordWithFrequency("g", 7);
-		WordWithFrequency h = new WordWithFrequency("h", 3);
-		WordWithFrequency i = new WordWithFrequency("i", 2);
-		WordWithFrequency j = new WordWithFrequency("j", 10);
 		
 		FixedSizeSortedSetForWordWithFrequency set = new FixedSizeSortedSetForWordWithFrequency(10);
 		
