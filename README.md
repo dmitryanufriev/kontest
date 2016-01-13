@@ -38,9 +38,11 @@ stdout:
 * korosu
 * karetachi
 
+
 * kanojo
 * kare
 * karetachi
+
 
 * kare
 * karetachi
