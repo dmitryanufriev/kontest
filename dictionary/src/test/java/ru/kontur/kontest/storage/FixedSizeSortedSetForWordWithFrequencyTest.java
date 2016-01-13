@@ -16,6 +16,7 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 	private WordWithFrequency h;
 	private WordWithFrequency i;
 	private WordWithFrequency j;
+	private FixedSizeSortedSetForWordWithFrequency set;
 
 	@Before
 	public void setUp() {
@@ -29,29 +30,21 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 		h = new WordWithFrequency("h", 3);
 		i = new WordWithFrequency("i", 2);
 		j = new WordWithFrequency("j", 10);
+		
+		set = new FixedSizeSortedSetForWordWithFrequency(10);
+		
+		for (WordWithFrequency wordWithFrequency : new WordWithFrequency[] { a, b, c, d, e, f, g, h, i, j }) {
+			set.add(wordWithFrequency);
+		}		
 	}
 	
 	@Test
 	public void wordsWithFrequenciesShouldBeAddedInSortOrder() {
-		
-		FixedSizeSortedSetForWordWithFrequency set = new FixedSizeSortedSetForWordWithFrequency(10);
-		
-		for (WordWithFrequency wordWithFrequency : new WordWithFrequency[] { a, b, c, d, e, f, g, h, i, j }) {
-			set.add(wordWithFrequency);
-		}
-		
 		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, set.toArray());
 	}
 	
 	@Test
 	public void sortedSetShouldBeFixedSize() {
-		
-		FixedSizeSortedSetForWordWithFrequency set = new FixedSizeSortedSetForWordWithFrequency(10);
-		
-		for (WordWithFrequency wordWithFrequency : new WordWithFrequency[] { a, b, c, d, e, f, g, h, i, j }) {
-			set.add(wordWithFrequency);
-		}
-		
 		WordWithFrequency z = new WordWithFrequency("z", 11);
 		set.add(z);
 		
