@@ -20,47 +20,28 @@
 
 stdin:
 
-5
-
-kare 10
-
-kanojo 20
-
-karetachi 10
-
-korosu 7
-
-sakura 3
-
-3
-
-k
-
-ka
-
-kar
+* 5
+* kare 10
+* kanojo 20
+* karetachi 10
+* korosu 7
+* sakura 3
+* 3
+* k
+* ka
+* kar
 
 stdout:
 
-kanojo
-
-kare
-
-korosu
-
-karetachi
-
-
-kanojo
-
-kare
-
-karetachi
-
-
-kare
-
-karetachi
+* kanojo
+* kare
+* korosu
+* karetachi
+* kanojo
+* kare
+* karetachi
+* kare
+* karetachi
 
 
 II часть
