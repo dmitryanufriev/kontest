@@ -46,7 +46,7 @@ stdout:
 
 **II часть**
 
-Решение должно быть в виде web-приложения с использованием Spring MVC и AngularJS. Запускать приложение на Apache Tomcat. Исходные данные подаются через файл.
+Решение должно быть в виде web-приложения с использованием [Spring MVC] (http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) и [AngularJS] (https://angularjs.org/). Запускать приложение на [Apache Tomcat] (http://tomcat.apache.org/). Исходные данные подаются через файл.
 
 *Исходные данные:*
 
@@ -58,6 +58,6 @@ stdout:
 
 
 Дополнительные требования:
-* Использование maven приветствуется (либо требуется иной скрипт для сборки)
+* Использование [maven] (https://maven.apache.org/) приветствуется (либо требуется иной скрипт для сборки)
 * Код на Java в стиле, соответствующем рекомендациям http://google.github.io/styleguide/javaguide.html
 * Приоритет на скорость работы (решение должно отрабатывать не дольше 1-10 секунд на тестово файле test.in)
