@@ -16,7 +16,7 @@ public class FixedSizeSortedListTest {
 	private WordWithFrequency h;
 	private WordWithFrequency i;
 	private WordWithFrequency j;
-	private FixedSizeSortedList<WordWithFrequency> set;
+	private FixedSizeSortedList<WordWithFrequency> sortedList;
 
 	@Before
 	public void setUp() {
@@ -31,32 +31,32 @@ public class FixedSizeSortedListTest {
 		i = new WordWithFrequency("i", 2);
 		j = new WordWithFrequency("j", 10);
 		
-		set = new FixedSizeSortedList<WordWithFrequency>(10);
+		sortedList = new FixedSizeSortedList<WordWithFrequency>(10);
 		
 		for (WordWithFrequency wordWithFrequency : new WordWithFrequency[] { a, b, c, d, e, f, g, h, i, j }) {
-			set.add(wordWithFrequency);
+			sortedList.add(wordWithFrequency);
 		}		
 	}
 	
 	@Test
 	public void wordsWithFrequenciesShouldBeAddedInSortOrder() {
-		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, set.toArray());
+		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray());
 	}
 	
 	@Test
-	public void sortedSetShouldBeFixedSize() {
+	public void sortedListShouldBeFixedSize() {
 		WordWithFrequency z = new WordWithFrequency("z", 11);
-		set.add(z);
+		sortedList.add(z);
 		
-		assertArrayEquals(new WordWithFrequency[] { z, j, b, c, d, g, e, f, h, i }, set.toArray());
+		assertArrayEquals(new WordWithFrequency[] { z, j, b, c, d, g, e, f, h, i }, sortedList.toArray());
 	}
 	
 	@Test
 	public void wordWithSmallFrequencyShouldNotBeAddedToSet() {
 		WordWithFrequency z = new WordWithFrequency("z", 0);
-		set.add(z);
+		sortedList.add(z);
 		
-		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, set.toArray());
+		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray());
 	}
 	
 }
