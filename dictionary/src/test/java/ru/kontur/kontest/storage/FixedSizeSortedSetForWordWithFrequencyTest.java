@@ -51,4 +51,12 @@ public class FixedSizeSortedSetForWordWithFrequencyTest {
 		assertArrayEquals(new WordWithFrequency[] { z, j, b, c, d, g, e, f, h, i }, set.toArray());
 	}
 	
+	@Test
+	public void wordWithSmallFrequencyShouldNotBeAddedToSet() {
+		WordWithFrequency z = new WordWithFrequency("z", 0);
+		set.add(z);
+		
+		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, set.toArray());
+	}
+	
 }

@@ -14,10 +14,10 @@ public class FixedSizeSortedSetForWordWithFrequency {
 	}
 
 	public void add(WordWithFrequency wordWithFrequency) {
-		if (sortedSet.size() == size) {
+		sortedSet.add(wordWithFrequency);
+		if (sortedSet.size() > size) {
 			sortedSet.remove(sortedSet.last());
 		}
-		sortedSet.add(wordWithFrequency);
 	}
 
 	public WordWithFrequency[] toArray() {
