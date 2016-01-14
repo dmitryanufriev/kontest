@@ -1,5 +1,7 @@
 package ru.kontur.kontest.storage;
 
+import java.util.Collection;
+
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
 	private final String word;
@@ -23,6 +25,12 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 	@Override
 	public String toString() {
 		return String.format("Word: %s, Frequency: %d", word, frequency);
+	}
+
+	public void addToCollectionForMatchedPrefix(Prefix prefix, Collection<WordWithFrequency> collection) {
+		if (new Prefix(word).equals(prefix)) {
+			collection.add(this);
+		}
 	}
 
 }

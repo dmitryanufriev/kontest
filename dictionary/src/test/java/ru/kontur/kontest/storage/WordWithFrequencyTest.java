@@ -2,6 +2,7 @@ package ru.kontur.kontest.storage;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.*;
@@ -46,5 +47,15 @@ public class WordWithFrequencyTest {
 		String msg = "Слово \"A\" с частотой " + HIGHER_FREQUENCY + " должно быть меньше слова \"B\" с частотой " + HIGHER_FREQUENCY;
 		
 		assertSame(msg, a.compareTo(b), "A".compareTo("B"));
+	}
+	
+	@Test
+	public void wordShouldBeAddedToCollectionForFullyMatchedPrefix() {
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", 10);
+		
+		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
+		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("word"), collection);
+		
+		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
 	}
 }
