@@ -1,4 +1,4 @@
-package ru.kontur.kontest.storage;
+package ru.kontur.kontest.words;
 
 import java.util.Collection;
 import java.util.HashSet;

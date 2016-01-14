@@ -1,4 +1,4 @@
-package ru.kontur.kontest.storage;
+package ru.kontur.kontest.words;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.*;
+
+import ru.kontur.kontest.words.Prefix;
+import ru.kontur.kontest.words.WordWithFrequency;
 
 public class WordWithFrequencyTest {
 	

@@ -1,4 +1,4 @@
-package ru.kontur.kontest.storage;
+package ru.kontur.kontest.words;
 
 public class Prefix {
 
