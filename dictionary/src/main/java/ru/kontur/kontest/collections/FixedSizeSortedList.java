@@ -1,4 +1,4 @@
-package ru.kontur.kontest.storage;
+package ru.kontur.kontest.collections;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
