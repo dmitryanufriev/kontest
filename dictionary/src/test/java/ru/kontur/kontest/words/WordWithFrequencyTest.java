@@ -71,4 +71,9 @@ public class WordWithFrequencyTest {
 		
 		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
 	}
+	
+	@Test
+	public void wordsWithSameWordsAndFrequenciesShouldBeEquals() {		
+		assertEquals(new WordWithFrequency("a", HIGHER_FREQUENCY), new WordWithFrequency("a", HIGHER_FREQUENCY));
+	}
 }
