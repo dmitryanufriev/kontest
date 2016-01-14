@@ -58,4 +58,14 @@ public class WordWithFrequencyTest {
 		
 		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
 	}
+	
+	@Test
+	public void wordShouldBeAddedToCollectionForPartiallyMatchedPrefix() {
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", 10);
+		
+		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
+		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("wo"), collection);
+		
+		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
+	}
 }

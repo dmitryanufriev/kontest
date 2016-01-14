@@ -1,11 +1,14 @@
 package ru.kontur.kontest.storage;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
 	private final String word;
 	private final int frequency;
+	
+	private HashSet<Prefix> prefixes;
 
 	public WordWithFrequency(String word, int frequency) {
 		this.word = word;
@@ -28,9 +31,21 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 	}
 
 	public void addToCollectionForMatchedPrefix(Prefix prefix, Collection<WordWithFrequency> collection) {
-		if (new Prefix(word).equals(prefix)) {
+		if (prefixes == null) {
+			prefixes = generatePrefixesFor(word);
+		}
+		
+		if (prefixes.contains(prefix)) {
 			collection.add(this);
 		}
+	}
+	
+	private static HashSet<Prefix> generatePrefixesFor(String word) {
+		HashSet<Prefix> prefixes = new HashSet<Prefix>(word.length());
+		for (int i = 1; i <= word.length(); i++) {
+			prefixes.add(new Prefix(word.substring(0, i)));
+		}
+		return prefixes;
 	}
 
 }
