@@ -51,7 +51,7 @@ public class WordWithFrequencyTest {
 	
 	@Test
 	public void wordShouldBeAddedToCollectionForFullyMatchedPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", 10);
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
 		
 		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
 		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("word"), collection);
@@ -61,7 +61,7 @@ public class WordWithFrequencyTest {
 	
 	@Test
 	public void wordShouldBeAddedToCollectionForPartiallyMatchedPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", 10);
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
 		
 		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
 		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("wo"), collection);
