@@ -32,15 +32,6 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 		return prefixes.contains(prefix);
 	}
 	
-	private static HashSet<Prefix> generatePrefixesFor(String word) {
-		final int prefixesCount = word.length();
-		HashSet<Prefix> prefixes = new HashSet<Prefix>(prefixesCount);
-		for (int i = 1; i <= prefixesCount; i++) {
-			prefixes.add(new Prefix(word.substring(0, i)));
-		}
-		return prefixes;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -85,5 +76,13 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 		return word;
 	}
 
+	private static HashSet<Prefix> generatePrefixesFor(String word) {
+		final int prefixesCount = word.length();
+		HashSet<Prefix> prefixes = new HashSet<Prefix>(prefixesCount);
+		for (int i = 1; i <= prefixesCount; i++) {
+			prefixes.add(new Prefix(word.substring(0, i)));
+		}
+		return prefixes;
+	}
 
 }
