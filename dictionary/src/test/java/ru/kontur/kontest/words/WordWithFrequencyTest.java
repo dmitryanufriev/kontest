@@ -2,7 +2,6 @@ package ru.kontur.kontest.words;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.*;
@@ -51,29 +50,32 @@ public class WordWithFrequencyTest {
 		
 		assertSame(msg, a.compareTo(b), "A".compareTo("B"));
 	}
-	
-	@Test
-	public void wordShouldBeAddedToCollectionForFullyMatchedPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
 		
-		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
-		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("word"), collection);
-		
-		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
-	}
-	
-	@Test
-	public void wordShouldBeAddedToCollectionForPartiallyMatchedPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
-		
-		ArrayList<WordWithFrequency> collection = new ArrayList<WordWithFrequency>();
-		wordWithFrequency.addToCollectionForMatchedPrefix(new Prefix("wo"), collection);
-		
-		assertArrayEquals(new WordWithFrequency[] { wordWithFrequency }, collection.toArray(new WordWithFrequency[0]));
-	}
-	
 	@Test
 	public void wordsWithSameWordsAndFrequenciesShouldBeEquals() {		
 		assertEquals(new WordWithFrequency("a", HIGHER_FREQUENCY), new WordWithFrequency("a", HIGHER_FREQUENCY));
+	}
+	
+	@Test
+	public void wordWithFrequencyAsStringShouldBeEqualToWord() {
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("a", 0);
+		
+		assertEquals("a", wordWithFrequency.toString());
+	}
+	
+	@Test
+	public void wordShouldMatchToSameAsWordPrefix() {
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("a", HIGHER_FREQUENCY);
+		Prefix prefix = new Prefix("a");
+		
+		assertTrue("Слово " + wordWithFrequency + " должно соответствовать префиксу " + prefix, wordWithFrequency.isMatchTo(prefix));
+	}
+	
+	@Test
+	public void wordShouldMathToStartOfWordPrefix() {
+		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
+		Prefix prefix = new Prefix("wo");
+		
+		assertTrue("Слово " + wordWithFrequency + " должно соответствовать префиксу " + prefix, wordWithFrequency.isMatchTo(prefix));
 	}
 }

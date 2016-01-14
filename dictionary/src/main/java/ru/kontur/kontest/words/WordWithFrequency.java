@@ -1,6 +1,5 @@
 package ru.kontur.kontest.words;
 
-import java.util.Collection;
 import java.util.HashSet;
 
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
@@ -25,15 +24,12 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 		return frequenciesComparisonResult;
 	}
 
-
-	public void addToCollectionForMatchedPrefix(Prefix prefix, Collection<WordWithFrequency> collection) {
+	public boolean isMatchTo(Prefix prefix) {
 		if (prefixes == null) {
 			prefixes = generatePrefixesFor(word);
 		}
 		
-		if (prefixes.contains(prefix)) {
-			collection.add(this);
-		}
+		return prefixes.contains(prefix);
 	}
 	
 	private static HashSet<Prefix> generatePrefixesFor(String word) {
@@ -86,7 +82,8 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
 	@Override
 	public String toString() {
-		return String.format("Word: %s, Frequency: %d", word, frequency);
+		return word;
 	}
+
 
 }

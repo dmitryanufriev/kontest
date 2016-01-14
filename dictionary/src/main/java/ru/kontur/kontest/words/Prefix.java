@@ -42,4 +42,9 @@ public class Prefix {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return prefix;
+	}
+
 }
