@@ -41,8 +41,9 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 	}
 	
 	private static HashSet<Prefix> generatePrefixesFor(String word) {
-		HashSet<Prefix> prefixes = new HashSet<Prefix>(word.length());
-		for (int i = 1; i <= word.length(); i++) {
+		final int prefixesCount = word.length();
+		HashSet<Prefix> prefixes = new HashSet<Prefix>(prefixesCount);
+		for (int i = 1; i <= prefixesCount; i++) {
 			prefixes.add(new Prefix(word.substring(0, i)));
 		}
 		return prefixes;
