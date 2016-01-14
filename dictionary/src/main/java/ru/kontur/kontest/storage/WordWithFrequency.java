@@ -25,10 +25,6 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 		return frequenciesComparisonResult;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("Word: %s, Frequency: %d", word, frequency);
-	}
 
 	public void addToCollectionForMatchedPrefix(Prefix prefix, Collection<WordWithFrequency> collection) {
 		if (prefixes == null) {
@@ -47,6 +43,11 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 			prefixes.add(new Prefix(word.substring(0, i)));
 		}
 		return prefixes;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Word: %s, Frequency: %d", word, frequency);
 	}
 
 }
