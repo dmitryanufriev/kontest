@@ -49,12 +49,35 @@ public class SortedSetStorageTest {
 		assertArrayEquals(new String[] { "kare", "karetachi" }, words);
 	}
 	
+	@Test
+	public void storageShouldBeAbleToStopSearching() {
+		final String[] words = new String[2];
+		
+		storage.searchWordsBy(new Prefix("k"), new SearchListener() {
+			int index = 0;
+			public void foundWord(WordWithFrequency wordWithFrequency) {
+				words[index] = wordWithFrequency.toString();
+				index++;
+			}
+			
+			public boolean stopSearching() {
+				return index > 1;
+			}
+		});
+		
+		assertArrayEquals(new String[] { "kanojo", "kare" }, words);
+	}
+	
 	private void findWords(String prefix, final String[] words) {
 		storage.searchWordsBy(new Prefix(prefix), new SearchListener() {
 			int index = 0;
 			public void foundWord(WordWithFrequency wordWithFrequency) {
 				words[index] = wordWithFrequency.toString();
 				index++;
+			}
+			
+			public boolean stopSearching() {
+				return false;
 			}
 		});
 	}

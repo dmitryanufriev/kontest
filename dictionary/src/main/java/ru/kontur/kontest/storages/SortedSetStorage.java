@@ -23,6 +23,10 @@ public class SortedSetStorage {
 			if (wordWithFrequency.isMatchTo(prefix)) {
 				searchListener.foundWord(wordWithFrequency);
 			}
+			
+			if (searchListener.stopSearching()) {
+				break;
+			}
 		}
 	}
 

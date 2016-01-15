@@ -6,4 +6,6 @@ public interface SearchListener {
 
 	void foundWord(WordWithFrequency wordWithFrequency);
 
+	boolean stopSearching();
+
 }
