@@ -7,9 +7,9 @@ import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class SortedSetStorage {
-	
+
 	private final TreeSet<WordWithFrequency> sortedSet;
-	
+
 	public SortedSetStorage() {
 		this.sortedSet = new TreeSet<WordWithFrequency>();
 	}
@@ -23,7 +23,7 @@ public class SortedSetStorage {
 			if (wordWithFrequency.isMatchTo(prefix)) {
 				searchListener.foundWord(wordWithFrequency);
 			}
-			
+
 			if (searchListener.stopSearching()) {
 				break;
 			}
