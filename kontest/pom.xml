@@ -9,7 +9,6 @@
   <description>Test task for Java developer position</description>
   
   <modules>
-  	<module>SimpleModule</module>
   	<module>engine</module>
   	<module>console</module>
   </modules>
