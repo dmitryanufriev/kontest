@@ -64,4 +64,18 @@ public class DataReaderTest {
 		verify(listener).nextPrefix(new Prefix("b"));
 	}
 	
+	@Test
+	public void readerShouldReadExactAmountOfPrefixes() throws IOException {
+		DataReader dataReader = new DataReader();
+		
+		InputStream dataStream = new ByteArrayInputStream("1\nfirst 10\n2\na\nb\nUnexpected".getBytes());
+		
+		TestDataListener listener = mock(TestDataListener.class);
+		dataReader.readFrom(dataStream, listener);
+
+		verify(listener).nextPrefix(new Prefix("a"));
+		verify(listener).nextPrefix(new Prefix("b"));
+		verify(listener, never()).nextPrefix(new Prefix("Unexpected"));
+	}
+	
 }

@@ -10,9 +10,9 @@ import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class DataReader {
-
-	public void readFrom(InputStream dataStream, TestDataListener testDataListener) throws IOException {
-		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(dataStream));
+	
+	public void readFrom(InputStream stream, TestDataListener testDataListener) throws IOException {
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
 		
 		int lineIndex = 0; // Индекс строка
 		int wordsCount = 0; // Количество слов с частотами
@@ -37,9 +37,13 @@ public class DataReader {
 				prefixesCount = Integer.parseInt(line);
 				testDataListener.prefixesCount(prefixesCount);
 				
-			} else { // Строка с префиксом
+			} else if (lineIndex <= wordsCount + 1 + prefixesCount) { // Строка с префиксом
 				
 				testDataListener.nextPrefix(new Prefix(line));
+				
+			} else { // Тестовых данных больше нет
+				
+				break;
 				
 			}
 			
