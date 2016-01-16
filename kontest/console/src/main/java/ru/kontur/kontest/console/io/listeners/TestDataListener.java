@@ -9,7 +9,7 @@ public interface TestDataListener {
 
 	public void nextWord(WordWithFrequency wordWithFrequency);
 
-	public void prefixesCount(int i);
+	public void prefixesCount(int count);
 
 	public void nextPrefix(Prefix prefix);
 
