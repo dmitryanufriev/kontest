@@ -26,7 +26,9 @@ public class DataReader {
 			} else if (lineIndex <= wordsCount) { // Слово с частотой
 				
 				String[] lineParts = line.split("\\s{1,1}"); // Одиночный пробел разделяет слово и частоту
-				testDataListener.nextWord(new WordWithFrequency(lineParts[0], Integer.parseInt(lineParts[1])));
+				String word = lineParts[0];
+				int frequency = Integer.parseInt(lineParts[1]);
+				testDataListener.nextWord(new WordWithFrequency(word, frequency));
 			
 			}
 			
