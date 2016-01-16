@@ -9,7 +9,7 @@ import ru.kontur.kontest.console.io.listeners.TestDataListener;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
-public class DataReader {
+public class InputReader {
 	
 	public void readFrom(InputStream stream, TestDataListener testDataListener) throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
