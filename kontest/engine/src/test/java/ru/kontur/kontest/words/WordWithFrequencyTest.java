@@ -3,7 +3,6 @@ package ru.kontur.kontest.words;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
-
 import org.junit.*;
 
 import ru.kontur.kontest.words.Prefix;
@@ -78,4 +77,12 @@ public class WordWithFrequencyTest {
 		
 		assertTrue("Слово " + wordWithFrequency + " должно соответствовать префиксу " + prefix, wordWithFrequency.isMatchTo(prefix));
 	}
+	
+	@Test
+	public void wordShouldReturnItsPrefixes() {
+		WordWithFrequency abc = new WordWithFrequency("abc", 10);
+		
+		assertArrayEquals(new Prefix[] { new Prefix("a"), new Prefix("ab"), new Prefix("abc") }, abc.getPrefixes());
+	}
+	
 }
