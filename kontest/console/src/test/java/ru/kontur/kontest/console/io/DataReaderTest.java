@@ -9,6 +9,7 @@ import java.io.InputStream;
 import org.junit.*;
 
 import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.words.WordWithFrequency;
 
 public class DataReaderTest {
 
@@ -22,6 +23,19 @@ public class DataReaderTest {
 		dataReader.readFrom(dataStream, listener);
 		
 		verify(listener).wordsCount(1);
+	}
+	
+	@Test
+	public void readerShouldReadAllWords() throws IOException {
+		DataReader dataReader = new DataReader();
+		
+		InputStream dataStream = new ByteArrayInputStream("2\nfirst 10\nsecond 20".getBytes());
+		
+		TestDataListener listener = mock(TestDataListener.class);
+		dataReader.readFrom(dataStream, listener);
+
+		verify(listener).nextWord(new WordWithFrequency("first", 10));
+		verify(listener).nextWord(new WordWithFrequency("second", 20));
 	}
 	
 }

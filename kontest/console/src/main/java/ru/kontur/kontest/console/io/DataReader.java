@@ -6,18 +6,31 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.words.WordWithFrequency;
 
 public class DataReader {
 
 	public void readFrom(InputStream dataStream, TestDataListener testDataListener) throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(dataStream));
-		int lineIndex = 0;
+		
+		int lineIndex = 0; // Индекс строка
+		int wordsCount = 0; // Количество слов с частотами
+		
 		String line = null;
 		while((line = bufferedReader.readLine()) != null) {
 			if (lineIndex == 0) { // Количество слов с частотами
-				testDataListener.wordsCount(Integer.parseInt(line));
-				lineIndex++;
+				
+				wordsCount = Integer.parseInt(line);
+				testDataListener.wordsCount(wordsCount);
+				
+			} else if (lineIndex <= wordsCount) { // Слово с частотой
+				
+				String[] lineParts = line.split("\\s{1,1}"); // Одиночный пробел разделяет слово и частоту
+				testDataListener.nextWord(new WordWithFrequency(lineParts[0], Integer.parseInt(lineParts[1])));
+			
 			}
+			
+			lineIndex++;
 		}
 	}
 
