@@ -42,7 +42,7 @@ public class FixedSizeSortedListTest {
 	
 	@Test
 	public void wordsWithFrequenciesShouldBeAddedInSortOrder() {
-		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray());
+		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray(new WordWithFrequency[0]));
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class FixedSizeSortedListTest {
 		WordWithFrequency z = new WordWithFrequency("z", 11);
 		sortedList.add(z);
 		
-		assertArrayEquals(new WordWithFrequency[] { z, j, b, c, d, g, e, f, h, i }, sortedList.toArray());
+		assertArrayEquals(new WordWithFrequency[] { z, j, b, c, d, g, e, f, h, i }, sortedList.toArray(new WordWithFrequency[0]));
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class FixedSizeSortedListTest {
 		WordWithFrequency z = new WordWithFrequency("z", 0);
 		sortedList.add(z);
 		
-		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray());
+		assertArrayEquals(new WordWithFrequency[] { j, b, c, d, g, e, f, h, i, a }, sortedList.toArray(new WordWithFrequency[0]));
 	}
 	
 }

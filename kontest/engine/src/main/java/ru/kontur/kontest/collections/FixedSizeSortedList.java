@@ -1,5 +1,6 @@
 package ru.kontur.kontest.collections;
 
+import java.util.Collection;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -20,9 +21,12 @@ public class FixedSizeSortedList<T> {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public T[] toArray() {
-		return (T[]) sortedSet.toArray();
+	public Collection<T> asCollection() {
+		return sortedSet;
+	}
+	
+	public T[] toArray(T[] a) {
+		return asCollection().toArray(a);
 	}
 
 }
