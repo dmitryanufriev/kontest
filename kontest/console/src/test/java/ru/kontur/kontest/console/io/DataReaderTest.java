@@ -14,7 +14,7 @@ import ru.kontur.kontest.words.WordWithFrequency;
 public class DataReaderTest {
 
 	@Test
-	public void readerShouldReadFirstLineAsCountOfWords() throws IOException {
+	public void readerShouldReadCountOfWords() throws IOException {
 		DataReader dataReader = new DataReader();
 		
 		InputStream dataStream = new ByteArrayInputStream("1\nword 10".getBytes());
@@ -36,6 +36,18 @@ public class DataReaderTest {
 
 		verify(listener).nextWord(new WordWithFrequency("first", 10));
 		verify(listener).nextWord(new WordWithFrequency("second", 20));
+	}
+	
+	@Test
+	public void readerShouldReadCountOfPrefixes() throws IOException {
+		DataReader dataReader = new DataReader();
+		
+		InputStream dataStream = new ByteArrayInputStream("1\nfirst 10\n2".getBytes());
+		
+		TestDataListener listener = mock(TestDataListener.class);
+		dataReader.readFrom(dataStream, listener);
+
+		verify(listener).prefixesCount(2);
 	}
 	
 }

@@ -15,21 +15,27 @@ public class DataReader {
 		
 		int lineIndex = 0; // Индекс строка
 		int wordsCount = 0; // Количество слов с частотами
+		int prefixesCount = 0; // Количество префиксов
 		
 		String line = null;
 		while((line = bufferedReader.readLine()) != null) {
-			if (lineIndex == 0) { // Количество слов с частотами
+			if (lineIndex == 0) { // Строка с количеством слов с частотами
 				
 				wordsCount = Integer.parseInt(line);
 				testDataListener.wordsCount(wordsCount);
 				
-			} else if (lineIndex <= wordsCount) { // Слово с частотой
+			} else if (lineIndex <= wordsCount) { // Строка со словом с частотой
 				
 				String[] lineParts = line.split("\\s{1,1}"); // Одиночный пробел разделяет слово и частоту
 				String word = lineParts[0];
 				int frequency = Integer.parseInt(lineParts[1]);
 				testDataListener.nextWord(new WordWithFrequency(word, frequency));
 			
+			} else if (lineIndex == wordsCount + 1) { // Строка с количеством префиксов
+				
+				prefixesCount = Integer.parseInt(line);
+				testDataListener.prefixesCount(prefixesCount);
+				
 			}
 			
 			lineIndex++;
