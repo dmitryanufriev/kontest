@@ -1,5 +1,6 @@
 package ru.kontur.kontest.console.io.listeners;
 
+import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public interface TestDataListener {
@@ -9,5 +10,7 @@ public interface TestDataListener {
 	public void nextWord(WordWithFrequency wordWithFrequency);
 
 	public void prefixesCount(int i);
+
+	public void nextPrefix(Prefix prefix);
 
 }

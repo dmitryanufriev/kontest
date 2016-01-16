@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class DataReader {
@@ -35,6 +36,10 @@ public class DataReader {
 				
 				prefixesCount = Integer.parseInt(line);
 				testDataListener.prefixesCount(prefixesCount);
+				
+			} else { // Строка с префиксом
+				
+				testDataListener.nextPrefix(new Prefix(line));
 				
 			}
 			
