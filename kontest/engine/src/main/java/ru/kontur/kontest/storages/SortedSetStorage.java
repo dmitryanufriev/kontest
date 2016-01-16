@@ -1,5 +1,7 @@
 package ru.kontur.kontest.storages;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.TreeSet;
 
 import ru.kontur.kontest.storages.listeners.SearchListener;
@@ -18,6 +20,42 @@ public class SortedSetStorage {
 		sortedSet.add(wordWithFrequency);
 	}
 
+	public Collection<WordWithFrequency> searchWordsBy(Prefix prefix) {
+		final ArrayList<WordWithFrequency> words = new ArrayList<WordWithFrequency>();
+		searchWordsBy(prefix, new SearchListener() {
+			
+			@Override
+			public boolean stopSearching() {
+				return false;
+			}
+			
+			@Override
+			public void foundWord(WordWithFrequency wordWithFrequency) {
+				words.add(wordWithFrequency);
+			}
+		});
+		
+		return words;
+	}
+	
+	public Collection<WordWithFrequency> searchWordsBy(Prefix prefix, final int count) {
+		final ArrayList<WordWithFrequency> words = new ArrayList<WordWithFrequency>();
+		searchWordsBy(prefix, new SearchListener() {
+			
+			@Override
+			public boolean stopSearching() {
+				return words.size() >= count;
+			}
+			
+			@Override
+			public void foundWord(WordWithFrequency wordWithFrequency) {
+				words.add(wordWithFrequency);
+			}
+		});
+		
+		return words;
+	}
+	
 	public void searchWordsBy(Prefix prefix, SearchListener searchListener) {
 		for (WordWithFrequency wordWithFrequency : sortedSet) {
 			if (wordWithFrequency.isMatchTo(prefix)) {

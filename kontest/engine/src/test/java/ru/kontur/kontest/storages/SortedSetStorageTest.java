@@ -2,6 +2,9 @@ package ru.kontur.kontest.storages;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.*;
 
 import ru.kontur.kontest.storages.listeners.SearchListener;
@@ -66,6 +69,28 @@ public class SortedSetStorageTest {
 		});
 		
 		assertArrayEquals(new String[] { "kanojo", "kare" }, words);
+	}
+	
+	@Test
+	public void storageShouldReturnCollectionOfFoundWords() {
+		Collection<WordWithFrequency> foundWords = storage.searchWordsBy(new Prefix("ka"));
+		ArrayList<String> words = new ArrayList<String>();
+		for (WordWithFrequency wordWithFrequency : foundWords) {
+			words.add(wordWithFrequency.toString());
+		}
+		
+		assertArrayEquals(new String[] { "kanojo", "kare", "karetachi" }, words.toArray(new String[0]));
+	}
+	
+	@Test
+	public void storageShouldReturnCollectionWithExactCountOfFoundWords() {
+		Collection<WordWithFrequency> foundWords = storage.searchWordsBy(new Prefix("ka"), 2);
+		ArrayList<String> words = new ArrayList<String>();
+		for (WordWithFrequency wordWithFrequency : foundWords) {
+			words.add(wordWithFrequency.toString());
+		}
+		
+		assertArrayEquals(new String[] { "kanojo", "kare" }, words.toArray(new String[0]));
 	}
 	
 	private void findWords(String prefix, final String[] words) {
