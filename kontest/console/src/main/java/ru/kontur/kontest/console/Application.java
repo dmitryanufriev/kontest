@@ -8,7 +8,7 @@ import java.util.Collection;
 import ru.kontur.kontest.console.io.InputReader;
 import ru.kontur.kontest.console.io.OutputWriter;
 import ru.kontur.kontest.console.io.listeners.TestDataListener;
-import ru.kontur.kontest.storages.SortedSetStorage;
+import ru.kontur.kontest.storages.HashMapStorage;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
@@ -20,10 +20,11 @@ public class Application {
 		InputReader inputReader = new InputReader();
 		inputReader.readFrom(inputStream, new TestDataListener() {
 			private final OutputWriter outputWriter = new OutputWriter();
-			private final SortedSetStorage sortedSetStorage = new SortedSetStorage();
+			private HashMapStorage storage;
 			
 			@Override
 			public void wordsCount(int count) {
+				storage = new HashMapStorage(count, WORDS_COUNT);
 			}
 			
 			@Override
@@ -32,12 +33,12 @@ public class Application {
 			
 			@Override
 			public void nextWord(WordWithFrequency wordWithFrequency) {
-				sortedSetStorage.put(wordWithFrequency);				
+				storage.put(wordWithFrequency);				
 			}
 			
 			@Override
 			public void nextPrefix(Prefix prefix) {
-				Collection<WordWithFrequency> foundWords = sortedSetStorage.searchWordsBy(prefix, WORDS_COUNT);
+				Collection<WordWithFrequency> foundWords = storage.searchWordsBy(prefix);
 				try {
 					outputWriter.writeWordsToStream(foundWords, outputStream);
 				} catch (IOException e) {

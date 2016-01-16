@@ -1,14 +1,10 @@
 package ru.kontur.kontest.words;
 
-import java.util.HashSet;
-
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
 	private final String word;
 	private final int frequency;
 	
-	private HashSet<Prefix> prefixes;
-
 	public WordWithFrequency(String word, int frequency) {
 		this.word = word;
 		this.frequency = frequency;
@@ -24,14 +20,6 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 		return frequenciesComparisonResult;
 	}
 
-	public boolean isMatchTo(Prefix prefix) {
-		if (prefixes == null) {
-			prefixes = generatePrefixesFor(word);
-		}
-		
-		return prefixes.contains(prefix);
-	}
-	
 	public Prefix[] getPrefixes() {
 		final int prefixesCount = word.length();
 		Prefix[] prefixes = new Prefix[prefixesCount];
@@ -85,15 +73,5 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 	public String toString() {
 		return word;
 	}
-
-	private static HashSet<Prefix> generatePrefixesFor(String word) {
-		final int prefixesCount = word.length();
-		HashSet<Prefix> prefixes = new HashSet<Prefix>(prefixesCount);
-		for (int i = 1; i <= prefixesCount; i++) {
-			prefixes.add(new Prefix(word.substring(0, i)));
-		}
-		return prefixes;
-	}
-
 
 }

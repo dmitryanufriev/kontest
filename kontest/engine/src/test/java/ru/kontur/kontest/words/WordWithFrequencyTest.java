@@ -63,22 +63,6 @@ public class WordWithFrequencyTest {
 	}
 	
 	@Test
-	public void wordShouldMatchToSameAsWordPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("a", HIGHER_FREQUENCY);
-		Prefix prefix = new Prefix("a");
-		
-		assertTrue("Слово " + wordWithFrequency + " должно соответствовать префиксу " + prefix, wordWithFrequency.isMatchTo(prefix));
-	}
-	
-	@Test
-	public void wordShouldMathToStartOfWordPrefix() {
-		WordWithFrequency wordWithFrequency = new WordWithFrequency("word", HIGHER_FREQUENCY);
-		Prefix prefix = new Prefix("wo");
-		
-		assertTrue("Слово " + wordWithFrequency + " должно соответствовать префиксу " + prefix, wordWithFrequency.isMatchTo(prefix));
-	}
-	
-	@Test
 	public void wordShouldReturnItsPrefixes() {
 		WordWithFrequency abc = new WordWithFrequency("abc", 10);
 		
