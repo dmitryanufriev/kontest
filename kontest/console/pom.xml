@@ -6,7 +6,7 @@
     <artifactId>kontest</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>console</artifactId>
+  <artifactId>kontest-console</artifactId>
   
   <dependencies>
   	<dependency>

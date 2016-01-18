@@ -8,8 +8,6 @@
   </parent>
   <artifactId>kontest-web</artifactId>
   <packaging>war</packaging>
-  <name>kontest-web Maven Webapp</name>
-  <url>http://maven.apache.org</url>
   
   <build>
     <finalName>kontest-web</finalName>
