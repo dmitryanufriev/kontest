@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,8 @@ import ru.kontur.kontest.words.WordWithFrequency;
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 public class AutocompleteControllerTest {
 	
+	private static final String URL = "/api/autocomplete/w";
+	
 	private MockMvc mockMvc;
 	
 	@Autowired
@@ -53,12 +56,20 @@ public class AutocompleteControllerTest {
 		
 		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Arrays.asList(wordWithFrequency));
 		
-		mockMvc.perform(get("/api/autocomplete/w"))
+		mockMvc.perform(get(URL))
 			   .andDo(print())
 		       .andExpect(status().isOk());
 		
 		verify(storage, times(1)).searchWordsBy(new Prefix("w"));
 		verifyNoMoreInteractions(storage);
+	}
+	
+	@Test
+	public void controllerShouldReturnNotFoundWhenNoWordsFound() throws Exception {
+		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Collections.<WordWithFrequency>emptyList());
+		
+		mockMvc.perform(get(URL))
+		       .andExpect(status().isNotFound());
 	}
 	
 }
