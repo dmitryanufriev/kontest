@@ -3,7 +3,7 @@ package ru.kontur.kontest.web.controller;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
+import static org.hamcrest.core.Is.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -57,8 +57,8 @@ public class AutocompleteControllerTest {
 		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Arrays.asList(wordWithFrequency));
 		
 		mockMvc.perform(get(URL))
-			   .andDo(print())
-		       .andExpect(status().isOk());
+		       .andExpect(status().isOk())
+		       .andExpect(jsonPath("$[0]", is("word")));
 		
 		verify(storage, times(1)).searchWordsBy(new Prefix("w"));
 		verifyNoMoreInteractions(storage);
