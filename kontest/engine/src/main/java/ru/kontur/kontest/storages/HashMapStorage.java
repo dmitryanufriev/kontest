@@ -8,7 +8,7 @@ import ru.kontur.kontest.collections.FixedSizeSortedList;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
-public class HashMapStorage {
+public class HashMapStorage implements Storage {
 	
 	private final HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>> storage;
 	private final int countOfWordsForPrefix;
@@ -23,6 +23,10 @@ public class HashMapStorage {
 		this.countOfWordsForPrefix = countOfWordsForPrefix;
 	}
 
+	/* (non-Javadoc)
+	 * @see ru.kontur.kontest.storages.Storage#put(ru.kontur.kontest.words.WordWithFrequency)
+	 */
+	@Override
 	public void put(WordWithFrequency wordWithFrequency) {
 		Prefix[] prefixes = wordWithFrequency.getPrefixes();
 		for (Prefix prefix : prefixes) {
@@ -34,6 +38,10 @@ public class HashMapStorage {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see ru.kontur.kontest.storages.Storage#searchWordsBy(ru.kontur.kontest.words.Prefix)
+	 */
+	@Override
 	public Collection<WordWithFrequency> searchWordsBy(Prefix prefix) {
 		if ( ! storage.containsKey(prefix)) {
 			return Collections.emptyList();

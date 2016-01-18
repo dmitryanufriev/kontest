@@ -11,7 +11,7 @@ import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class HashMapStorageTest {
-	private HashMapStorage storage;
+	private Storage storage;
 
 	@Before
 	public void setUp() {
@@ -53,7 +53,7 @@ public class HashMapStorageTest {
 	
 	@Test
 	public void storageShouldSupportExactCountOfWords() {
-		HashMapStorage storage = new HashMapStorage(2);
+		Storage storage = new HashMapStorage(2);
 		WordWithFrequency kare = new WordWithFrequency("kare", 10);
 		WordWithFrequency kanojo = new WordWithFrequency("kanojo", 20);
 		WordWithFrequency karetachi = new WordWithFrequency("karetachi", 10);
