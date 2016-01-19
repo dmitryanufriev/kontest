@@ -16,6 +16,7 @@
 		<jackson.version>1.9.10</jackson.version>
 		<jsonpath.version>0.8.1</jsonpath.version>
 		<jstl.version>1.2</jstl.version>
+		<servletapi.version>3.1.0</servletapi.version>
 	</properties>
 
 	<dependencies>
@@ -73,11 +74,20 @@
 			<version>${jsonpath.version}</version>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>com.jayway.jsonpath</groupId>
 			<artifactId>json-path-assert</artifactId>
 			<version>${jsonpath.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- compile only, deployed container will provide this -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servletapi.version}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
