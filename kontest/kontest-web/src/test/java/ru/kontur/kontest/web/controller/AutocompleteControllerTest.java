@@ -3,7 +3,7 @@ package ru.kontur.kontest.web.controller;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.hamcrest.core.Is.*;
+import static org.hamcrest.Matchers.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -71,11 +71,12 @@ public class AutocompleteControllerTest {
 	}
 	
 	@Test
-	public void controllerShouldReturnNotFoundWhenNoWordsFound() throws Exception {
+	public void controllerShouldReturnEmptyArrayWhenNoWordsFound() throws Exception {
 		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Collections.<WordWithFrequency>emptyList());
 		
 		mockMvc.perform(get(URL))
-		       .andExpect(status().isNotFound());
+		       .andExpect(status().isOk())
+		       .andExpect(jsonPath("$", hasSize(0)));
 	}
 	
 }

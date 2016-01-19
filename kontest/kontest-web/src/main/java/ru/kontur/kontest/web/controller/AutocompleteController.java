@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ru.kontur.kontest.storages.Storage;
-import ru.kontur.kontest.web.controller.exceptions.ResourceNotFoundException;
 import ru.kontur.kontest.web.services.StorageService;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
@@ -28,10 +27,6 @@ public class AutocompleteController {
 		Storage storage = storageService.getStorage();
 		
 		Collection<WordWithFrequency> foundWords = storage.searchWordsBy(new Prefix(prefix));
-		
-		if (foundWords.size() < 1) {
-			throw new ResourceNotFoundException();
-		}
 		
 		ArrayList<String> words = new ArrayList<>(foundWords.size());
 		for (WordWithFrequency word : foundWords) {
