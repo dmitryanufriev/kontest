@@ -1,4 +1,4 @@
-package ru.kontur.kontest.console.io;
+package ru.kontur.kontest.io;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import org.junit.*;
 
+import ru.kontur.kontest.io.OutputWriter;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class OutputWriterTest {

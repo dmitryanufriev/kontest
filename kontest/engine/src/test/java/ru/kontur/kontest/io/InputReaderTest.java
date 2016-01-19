@@ -1,4 +1,4 @@
-package ru.kontur.kontest.console.io;
+package ru.kontur.kontest.io;
 
 import static org.mockito.Mockito.*;
 
@@ -8,7 +8,8 @@ import java.io.InputStream;
 
 import org.junit.*;
 
-import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.io.InputReader;
+import ru.kontur.kontest.io.listeners.TestDataListener;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 

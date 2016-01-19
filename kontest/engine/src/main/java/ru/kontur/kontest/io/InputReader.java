@@ -1,11 +1,11 @@
-package ru.kontur.kontest.console.io;
+package ru.kontur.kontest.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.io.listeners.TestDataListener;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 

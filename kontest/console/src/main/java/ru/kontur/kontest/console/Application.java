@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collection;
 
-import ru.kontur.kontest.console.io.InputReader;
-import ru.kontur.kontest.console.io.OutputWriter;
-import ru.kontur.kontest.console.io.listeners.TestDataListener;
+import ru.kontur.kontest.io.InputReader;
+import ru.kontur.kontest.io.OutputWriter;
+import ru.kontur.kontest.io.listeners.TestDataListener;
 import ru.kontur.kontest.storages.HashMapStorage;
 import ru.kontur.kontest.storages.Storage;
 import ru.kontur.kontest.words.Prefix;

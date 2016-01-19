@@ -1,4 +1,4 @@
-package ru.kontur.kontest.console.io;
+package ru.kontur.kontest.io;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

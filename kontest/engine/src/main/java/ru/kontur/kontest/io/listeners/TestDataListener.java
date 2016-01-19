@@ -1,4 +1,4 @@
-package ru.kontur.kontest.console.io.listeners;
+package ru.kontur.kontest.io.listeners;
 
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
