@@ -18,7 +18,12 @@ public class Application {
 	private static final int WORDS_COUNT = 10;
 
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		Application application = new Application();
+		try {
+			application.execute(System.in, System.out);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void execute(InputStream inputStream, final OutputStream outputStream) throws IOException {
