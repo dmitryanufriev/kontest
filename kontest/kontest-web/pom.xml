@@ -101,37 +101,5 @@
 
 	<build>
 		<finalName>kontest-web</finalName>
-		
-		<plugins>
-			<!-- Copy final war to bin -->
-			<plugin>
-				<groupId>com.github.goldin</groupId>
-				<artifactId>copy-maven-plugin</artifactId>
-				<version>0.2.5</version>
-				<executions>
-					<execution>
-						<id>deploy-to-local-directory</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<skipIdentical>false</skipIdentical>
-							<failIfNotFound>false</failIfNotFound>
-							<resources>
-								<resource>
-									<description>Copy artifact to another directory</description>
-									<targetPath>output</targetPath>
-									<directory>${project.build.directory}</directory>
-									<includes>
-										<include>${project.artifactId}.war</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 	</build>
 </project>
