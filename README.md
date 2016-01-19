@@ -18,7 +18,7 @@
 
 *Пример:*
 
-**stdin:**
+**stdin**
 
 5  
 kare 10  
@@ -31,7 +31,7 @@ k
 ka  
 kar
 
-**stdout:**
+**stdout**
 
 kanojo  
 kare  
