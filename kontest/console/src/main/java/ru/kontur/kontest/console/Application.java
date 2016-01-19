@@ -17,6 +17,10 @@ public class Application {
 
 	private static final int WORDS_COUNT = 10;
 
+	public static void main(String[] args) {
+		System.out.println("Hello world!");
+	}
+	
 	public void execute(InputStream inputStream, final OutputStream outputStream) throws IOException {
 		InputReader inputReader = new InputReader();
 		inputReader.readFrom(inputStream, new TestDataListener() {
