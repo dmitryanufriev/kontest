@@ -15,11 +15,16 @@ public class OutputWriter {
 			stringBuilder.append(word);
 			stringBuilder.append("\n");
 		}
-		stringBuilder.append('\n');
-		
-		BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-		bufferedWriter.write(stringBuilder.toString());
-		bufferedWriter.flush();
+
+		if (stringBuilder.length() > 0) {
+			stringBuilder.append('\n');
+
+			BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
+			bufferedWriter.write(stringBuilder.toString());
+			bufferedWriter.flush();
+
+		}
+
 	}
 
 }

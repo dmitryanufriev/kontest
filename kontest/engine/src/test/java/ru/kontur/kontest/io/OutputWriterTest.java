@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 
 import org.junit.*;
 
@@ -25,6 +26,16 @@ public class OutputWriterTest {
 		outputWriter.writeWordsToStream(Arrays.asList(words), outputStream);
 		
 		assertEquals("a\nb\n\n", outputStream.toString());
+	}
+	
+	@Test
+	public void outputWriterShouldWriteNothingWhenNoFoundWords() throws IOException {
+		OutputWriter outputWriter = new OutputWriter();
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		
+		outputWriter.writeWordsToStream(Collections.<WordWithFrequency>emptyList(), outputStream);
+		
+		assertEquals(0, outputStream.size());
 	}
 	
 }
