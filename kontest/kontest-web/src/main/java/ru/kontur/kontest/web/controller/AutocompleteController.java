@@ -22,6 +22,11 @@ public class AutocompleteController {
 	@Autowired
 	private StorageService storageService;
 	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public @ResponseBody String[] noPrefix() {
+		return new String[0];
+	}
+	
 	@RequestMapping(value = "{prefix}", method = RequestMethod.GET)
 	public @ResponseBody String[] findWordsByPrefix(@PathVariable String prefix) {
 		Storage storage = storageService.getStorage();

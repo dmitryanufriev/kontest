@@ -34,7 +34,8 @@ import ru.kontur.kontest.words.WordWithFrequency;
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 public class AutocompleteControllerTest {
 	
-	private static final String URL = "/api/autocomplete/w";
+	private static final String URL = "/api/autocomplete";
+	private static final String URL_WITH_PREFIX = URL + "/w";
 	
 	private MockMvc mockMvc;
 	private Storage storage;
@@ -62,7 +63,7 @@ public class AutocompleteControllerTest {
 		
 		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Arrays.asList(wordWithFrequency));
 		
-		mockMvc.perform(get(URL))
+		mockMvc.perform(get(URL_WITH_PREFIX))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$[0]", is("word")));
 		
@@ -74,9 +75,16 @@ public class AutocompleteControllerTest {
 	public void controllerShouldReturnEmptyArrayWhenNoWordsFound() throws Exception {
 		when(storage.searchWordsBy(new Prefix("w"))).thenReturn(Collections.<WordWithFrequency>emptyList());
 		
-		mockMvc.perform(get(URL))
+		mockMvc.perform(get(URL_WITH_PREFIX))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$", hasSize(0)));
+	}
+	
+	@Test
+	public void controllerShouldReturnEmptyArrayWhenPrefixNotSet() throws Exception {
+		mockMvc.perform(get(URL))
+	       .andExpect(status().isOk())
+	       .andExpect(jsonPath("$", hasSize(0)));
 	}
 	
 }
