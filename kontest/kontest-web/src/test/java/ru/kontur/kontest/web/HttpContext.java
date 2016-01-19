@@ -5,14 +5,14 @@ import static org.mockito.Mockito.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ru.kontur.kontest.storages.Storage;
+import ru.kontur.kontest.web.services.StorageService;
 
 @Configuration
 public class HttpContext {
 
 	@Bean
-	public Storage storage() {
-		return mock(Storage.class);
+	public StorageService storageService() {
+		return mock(StorageService.class);
 	}
 	
 }

@@ -25,6 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 import ru.kontur.kontest.storages.Storage;
 import ru.kontur.kontest.web.HttpContext;
 import ru.kontur.kontest.web.configuration.WebContext;
+import ru.kontur.kontest.web.services.StorageService;
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
@@ -37,17 +38,22 @@ public class AutocompleteControllerTest {
 	private static final String URL = "/api/autocomplete/w";
 	
 	private MockMvc mockMvc;
+	private Storage storage;
 	
 	@Autowired
-	private Storage storage;
+	private StorageService storageService;
 	
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 	
 	@Before
 	public void setUp() {
-		Mockito.reset(storage);
+		Mockito.reset(storageService);
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+		
+		storage = mock(Storage.class);
+		
+		when(storageService.getStorage()).thenReturn(storage);
 	}
 	
 	@Test
