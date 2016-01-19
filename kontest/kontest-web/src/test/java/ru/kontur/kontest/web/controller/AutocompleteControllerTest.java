@@ -11,7 +11,6 @@ import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -30,7 +29,7 @@ import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { HttpContext.class, WebContext.class })
+@ContextConfiguration(classes = { WebContext.class, HttpContext.class })
 @WebAppConfiguration
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
 public class AutocompleteControllerTest {
@@ -48,7 +47,8 @@ public class AutocompleteControllerTest {
 	
 	@Before
 	public void setUp() {
-		Mockito.reset(storageService);
+		reset(storageService);
+		
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 		
 		storage = mock(Storage.class);

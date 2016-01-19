@@ -12,7 +12,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class ApplicationConfiguration implements WebApplicationInitializer {
 
 	private static final String DISPATCHER_SERVLET_NAME = "dispatcher";
-	private static final String DISPATCHER_SERVLET_MAPPING = "/api/";
+	private static final String DISPATCHER_SERVLET_MAPPING = "/";
 	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {

@@ -15,6 +15,7 @@
 		<spring.version>3.2.16.RELEASE</spring.version>
 		<jackson.version>1.9.10</jackson.version>
 		<jsonpath.version>0.8.1</jsonpath.version>
+		<jstl.version>1.2</jstl.version>
 	</properties>
 
 	<dependencies>
@@ -49,6 +50,13 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
 		</dependency>
 
 		<!-- Jackson JSON Mapper -->
