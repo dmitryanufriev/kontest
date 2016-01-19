@@ -6,8 +6,11 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import ru.kontur.kontest.io.InputReader;
+import ru.kontur.kontest.io.listeners.TestDataListener;
 import ru.kontur.kontest.storages.HashMapStorage;
 import ru.kontur.kontest.storages.Storage;
+import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
 
 public class StorageService implements InitializingBean {
@@ -15,22 +18,34 @@ public class StorageService implements InitializingBean {
 	private Storage storage;
 	
 	public Storage getStorage() {
-		HashMapStorage hashMapStorage = new HashMapStorage(10, 10);
-		
-		hashMapStorage.put(new WordWithFrequency("kare", 10));
-		hashMapStorage.put(new WordWithFrequency("kanojo", 20));
-		hashMapStorage.put(new WordWithFrequency("karetachi", 10));
-		hashMapStorage.put(new WordWithFrequency("korosu", 7));
-		hashMapStorage.put(new WordWithFrequency("sakura", 3));
-		
-		return hashMapStorage;
+		return storage;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		Resource resource = new ClassPathResource("test.in");
-		try(InputStream resourceInputStream = resource.getInputStream()) {
-			System.out.println(resourceInputStream.available());
+		try(InputStream inputStream = resource.getInputStream()) {
+			InputReader inputReader = new InputReader();
+			inputReader.readFrom(inputStream, new TestDataListener() {
+				
+				@Override
+				public void wordsCount(int count) {
+					storage = new HashMapStorage(count, 10);					
+				}
+				
+				@Override
+				public void prefixesCount(int count) {
+				}
+				
+				@Override
+				public void nextWord(WordWithFrequency wordWithFrequency) {
+					storage.put(wordWithFrequency);
+				}
+				
+				@Override
+				public void nextPrefix(Prefix prefix) {
+				}
+			});
 		}
 	}
 
