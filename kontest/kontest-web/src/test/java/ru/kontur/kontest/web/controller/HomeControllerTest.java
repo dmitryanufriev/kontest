@@ -1,7 +1,8 @@
 package ru.kontur.kontest.web.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,21 +22,18 @@ import ru.kontur.kontest.web.configuration.WebContext;
 @WebAppConfiguration
 public class HomeControllerTest {
 
-	private MockMvc mockMvc;
-	
-	@Autowired
-	private WebApplicationContext webApplicationContext;
-	
-	@Before
-	public void setUp() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-	}
-	
-	@Test
-	public void controllerShouldReturnIndexPage() throws Exception {
-		mockMvc.perform(get("/"))
-		       .andExpect(status().isOk())
-		       .andExpect(view().name("home/index"));
-	}
-	
+  @Before
+  public void setUp() {
+    mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+  }
+
+  @Test
+  public void controllerShouldReturnIndexPage() throws Exception {
+    mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("home/index"));
+  }
+
+  @Autowired
+  private WebApplicationContext webApplicationContext;
+
+  private MockMvc mockMvc;
 }

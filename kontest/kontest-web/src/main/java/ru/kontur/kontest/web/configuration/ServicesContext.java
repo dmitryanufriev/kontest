@@ -8,9 +8,8 @@ import ru.kontur.kontest.web.services.StorageService;
 @Configuration
 public class ServicesContext {
 
-	@Bean
-	public StorageService storageService() {
-		return new StorageService();
-	}
-	
+  @Bean
+  public StorageService storageService() {
+    return new StorageService();
+  }
 }
