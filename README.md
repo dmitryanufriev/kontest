@@ -1,10 +1,10 @@
-# kontest
+# KONTEST
 **Задача:**
 
 Реализовать функцию автодополнения следующим образом: по началу слова необходимо выдавать список из 10 наиболее часто встречающихся слов, начинающихся с указанного префикса. Сортировать варианты автодополнения в порядке убывания частоты использования. В случае равенства частот - варианты сортируются естественным образом (по алфавиту). Если вариантов меньше 10, то выдавать столько, сколько нашли.
 
 
-**I часть**
+## I часть
 
 Решение должно быть в виде консольного java-приложения. Исходные данные подаются через стандартный поток ввода, а все результаты выводятся в стандартный поток вывода.
 
@@ -18,37 +18,37 @@
 
 *Пример:*
 
-stdin:
+**stdin**
 
-* 5
-* kare 10
-* kanojo 20
-* karetachi 10
-* korosu 7
-* sakura 3
-* 3
-* k
-* ka
-* kar
+5  
+kare 10  
+kanojo 20  
+karetachi 10  
+korosu 7  
+sakura 3  
+3  
+k  
+ka  
+kar
 
-stdout:
+**stdout**
 
-* kanojo
-* kare
-* korosu
-* karetachi
-
-
-* kanojo
-* kare
-* karetachi
+kanojo  
+kare  
+korosu  
+karetachi  
 
 
-* kare
-* karetachi
+kanojo  
+kare  
+karetachi  
 
 
-**II часть**
+kare  
+karetachi
+
+
+## II часть
 
 Решение должно быть в виде web-приложения с использованием [Spring MVC] (http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html) и [AngularJS] (https://angularjs.org/). Запускать приложение на [Apache Tomcat] (http://tomcat.apache.org/). Исходные данные подаются через файл.
 
