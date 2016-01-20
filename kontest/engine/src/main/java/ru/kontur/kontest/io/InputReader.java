@@ -14,34 +14,34 @@ public class InputReader {
 	public void readFrom(InputStream stream, TestDataListener testDataListener) throws IOException {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
 		
-		int lineIndex = 0; // Индекс строка
-		int wordsCount = 0; // Количество слов с частотами
-		int prefixesCount = 0; // Количество префиксов
+		int lineIndex = 0; // РРЅРґРµРєСЃ С‚РµРєСѓС‰РµР№ СЃС‚СЂРѕРєРё
+		int wordsCount = 0; // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕРІ
+		int prefixesCount = 0; // РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµС„РёРєСЃРѕРІ
 		
 		String line = null;
 		while((line = bufferedReader.readLine()) != null) {
-			if (lineIndex == 0) { // Строка с количеством слов с частотами
+			if (lineIndex == 0) { // РЎС‚СЂРѕРєР° СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј СЃР»РѕРІ
 				
 				wordsCount = Integer.parseInt(line);
 				testDataListener.wordsCount(wordsCount);
 				
-			} else if (lineIndex <= wordsCount) { // Строка со словом с частотой
+			} else if (lineIndex <= wordsCount) { // РЎС‚СЂРѕРєР°, РєРѕС‚РѕСЂР°СЏ СЃРѕРґРµСЂР¶РёС‚ СЃР»РѕРІРѕ СЃ С‡Р°СЃС‚РѕС‚РѕР№
 				
-				String[] lineParts = line.split("\\s{1,1}"); // Одиночный пробел разделяет слово и частоту
+				String[] lineParts = line.split("\\s{1,1}");
 				String word = lineParts[0];
 				int frequency = Integer.parseInt(lineParts[1]);
 				testDataListener.nextWord(new WordWithFrequency(word, frequency));
 			
-			} else if (lineIndex == wordsCount + 1) { // Строка с количеством префиксов
+			} else if (lineIndex == wordsCount + 1) { // РЎС‚СЂРѕРєР° СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј РїСЂРµС„РёРєСЃРѕРІ
 				
 				prefixesCount = Integer.parseInt(line);
 				testDataListener.prefixesCount(prefixesCount);
 				
-			} else if (lineIndex <= wordsCount + 1 + prefixesCount) { // Строка с префиксом
+			} else if (lineIndex <= wordsCount + 1 + prefixesCount) { // РЎС‚СЂРѕРєР° СЃ РїСЂРµС„РёРєСЃРѕРј
 				
 				testDataListener.nextPrefix(new Prefix(line));
 				
-			} else { // Тестовых данных больше нет
+			} else { // РљРѕРЅРµС† С‚РµСЃС‚РѕРІС‹С… РґР°РЅРЅС‹С…
 				
 				break;
 				

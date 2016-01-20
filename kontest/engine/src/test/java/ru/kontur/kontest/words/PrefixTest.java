@@ -12,7 +12,7 @@ public class PrefixTest {
 	public void prefixesShouldBeEqualsForSameStrings() {
 		Prefix prefix = new Prefix("a");
 		
-		assertEquals("Два префикса с одинаковыми словами должны быть эквивалентны", new Prefix("a"), prefix);
+		assertEquals("РќРµ СЃРѕРІРїР°РґР°СЋС‚ РїСЂРµС„РёРєСЃС‹ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё СЃР»РѕРІР°РјРё", new Prefix("a"), prefix);
 	}
 	
 	@Test
