@@ -9,7 +9,7 @@
 		<title>II часть тестового задания</title>
 	</head>
 	<body>
-		<div ng-controller="AutocompleteCtrl">
+		<div ng-controller="AutocompleteCtrl" ng-init="init('<spring:url value="/api/autocomplete/" />')">
             <input type="text" ng-change="onedit()" ng-model="prefix">
             <br/> 
 			<div ng-hide="!words.length">
