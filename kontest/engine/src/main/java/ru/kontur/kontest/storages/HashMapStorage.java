@@ -8,16 +8,26 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 
+/**
+ * Хранилище слов с частотами на основе {@link HashMap}
+ * @author Дмитрий Ануфриев
+ */
 public class HashMapStorage implements Storage {
 
-  private final HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>> storage;
-  private final int countOfWordsForPrefix;
-
+  /**
+   * Конструктор
+   * @param countOfWordsForPrefix Количество хранимых слов по каждому префиксу
+   */
   public HashMapStorage(int countOfWordsForPrefix) {
     storage = new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>();
     this.countOfWordsForPrefix = countOfWordsForPrefix;
   }
 
+  /**
+   * Конструктор
+   * @param storageSize Размер хранилища
+   * @param countOfWordsForPrefix Количество хранимых слов по каждому префиксу
+   */
   public HashMapStorage(int storageSize, int countOfWordsForPrefix) {
     storage = new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>(storageSize);
     this.countOfWordsForPrefix = countOfWordsForPrefix;
@@ -43,4 +53,7 @@ public class HashMapStorage implements Storage {
 
     return storage.get(prefix).asCollection();
   }
+  
+  private final HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>> storage;
+  private final int countOfWordsForPrefix;
 }

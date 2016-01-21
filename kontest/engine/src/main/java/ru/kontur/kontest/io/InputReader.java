@@ -9,8 +9,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Класс для чтения тестовых данных
+ * @author Дмитрий Ануфриев
+ *
+ */
 public class InputReader {
 
+  /**
+   * Прочитать тестовые данные из <code>stream</code>
+   * @param stream Поток, содержащий тестовые данные
+   * @param testDataListener Объект, реализующий интерфейс {@link TestDataListener}
+   * @throws IOException Ошибка ввода/вывода
+   */
   public void readFrom(InputStream stream, TestDataListener testDataListener) throws IOException {
     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
 

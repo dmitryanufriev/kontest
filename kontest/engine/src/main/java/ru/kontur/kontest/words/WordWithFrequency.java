@@ -1,15 +1,35 @@
 package ru.kontur.kontest.words;
 
+/**
+ * Слово с частотой
+ * @author Дмитрий Ануфриев
+ */
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
-  private final String word;
-  private final int frequency;
-
+  /**
+   * Конструктор
+   * @param word Слово
+   * @param frequency Частота повторения
+   */
   public WordWithFrequency(String word, int frequency) {
     this.word = word;
     this.frequency = frequency;
   }
 
+  /**
+   * Получить префиксы слова
+   * @return Массив {@link Prefix}
+   */
+  public Prefix[] getPrefixes() {
+    final int prefixesCount = word.length();
+    Prefix[] prefixes = new Prefix[prefixesCount];
+    for (int i = 1; i <= prefixesCount; i++) {
+      prefixes[i - 1] = new Prefix(word.substring(0, i));
+    }
+    
+    return prefixes;
+  }
+  
   public int compareTo(WordWithFrequency wordWithFrequency) {
     int frequenciesComparisonResult = wordWithFrequency.frequency - frequency;
 
@@ -19,16 +39,6 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
     }
 
     return frequenciesComparisonResult;
-  }
-
-  public Prefix[] getPrefixes() {
-    final int prefixesCount = word.length();
-    Prefix[] prefixes = new Prefix[prefixesCount];
-    for (int i = 1; i <= prefixesCount; i++) {
-      prefixes[i - 1] = new Prefix(word.substring(0, i));
-    }
-
-    return prefixes;
   }
 
   @Override
@@ -74,4 +84,7 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
   public String toString() {
     return word;
   }
+  
+  private final String word;
+  private final int frequency;
 }

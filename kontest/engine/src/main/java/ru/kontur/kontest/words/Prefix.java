@@ -1,9 +1,17 @@
 package ru.kontur.kontest.words;
 
+/**
+ * Префикс слова.
+ * Набор символов с начала строки. Может включать в себя всю строку.
+ * @author Дмитрий Ануфриев
+ *
+ */
 public class Prefix {
 
-  private final String prefix;
-
+  /**
+   * Конструктор
+   * @param prefix {@link String} Префикс слова
+   */
   public Prefix(String prefix) {
     this.prefix = prefix;
   }
@@ -46,4 +54,6 @@ public class Prefix {
   public String toString() {
     return prefix;
   }
+  
+  private final String prefix;
 }
