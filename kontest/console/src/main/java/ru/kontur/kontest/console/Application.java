@@ -13,8 +13,17 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collection;
 
+/**
+ * Точка входа в приложение
+ * @author Дмитрий Ануфриев
+ *
+ */
 public class Application {
 
+  /**
+   * Прочитать тестовые данные из stdin и записать результаты работы в stdout
+   * @param args Аргументы командной строки
+   */
   public static void main(String[] args) {
     Application application = new Application();
     try {
@@ -24,6 +33,13 @@ public class Application {
     }
   }
 
+  /**
+   * Прочитать тестовые данные из <code>inputStream</code> и вывести слова,
+   * соответствующие префиксам в <code>outputStream</code>
+   * @param inputStream Поток с входными данными
+   * @param outputStream Поток для выходных данных
+   * @throws IOException Ошибка ввода/вывода
+   */
   public void execute(InputStream inputStream, final OutputStream outputStream) throws IOException {
     InputReader inputReader = new InputReader();
     inputReader.readFrom(inputStream, new TestDataListener() {
