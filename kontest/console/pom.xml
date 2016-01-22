@@ -8,6 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>kontest-console</artifactId>
+	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
@@ -28,6 +29,15 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4.1</version>
 				<configuration>
+				    <!-- remove not necessary jar-with-dependencies suffix -->
+				    <appendAssemblyId>false</appendAssemblyId>
+				    
+				    <!-- make final package name -->
+				    <finalName>console-${project.artifact.version}</finalName>
+				    
+				    <!-- copy build result to custom directory -->
+				    <outputDirectory>../bin/</outputDirectory>
+				    
 					<!-- get all project dependencies -->
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
@@ -38,7 +48,6 @@
 							<mainClass>ru.kontur.kontest.console.Application</mainClass>
 						</manifest>
 					</archive>
-
 				</configuration>
 				<executions>
 					<execution>
