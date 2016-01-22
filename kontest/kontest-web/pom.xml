@@ -89,7 +89,7 @@
 			<version>${servletapi.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!--Hamcrest -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -100,6 +100,15 @@
 	</dependencies>
 
 	<build>
-		<finalName>kontest-web</finalName>
+		<finalName>web-${project.artifact.version}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<outputDirectory>bin/</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
