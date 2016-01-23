@@ -1,35 +1,37 @@
 (function() {
 
-	var autocomplete = angular.module('autocomplete', []);
+	var AutocompleteCtrl = function($scope, wordsSource) {
 
-	autocomplete.controller('AutocompleteCtrl', function($scope, wordsSource) {
+		$scope.onedit = function(autocompleteUrl) {
+			
+			wordsSource.getWords(autocompleteUrl + $scope.prefix)
+			           .then(function(foundWords) {
+			        	   $scope.words = foundWords;
+			           });
+		};
+
 		$scope.prefix = undefined;
 		$scope.words = [];
+	};
 
-		$scope.init = function(autocompleteUrl) {
-			$scope.autcompleteUrl = autocompleteUrl;
-		};
-		
-		$scope.onedit = function() {
-			$scope.words = [];
+	// application
+	var autocomplete = angular.module('autocomplete', []);
 
-			wordsSource.get($scope.autcompleteUrl + $scope.prefix).then(function(foundWords) {
-				for (var i = 0; i < foundWords.length; i ++) {
-					$scope.words.push(foundWords[i]);
-				}
-			});
-		};
-		
-	});
+	// controller
+	autocomplete.controller('AutocompleteCtrl', [ '$scope', 'wordsSource', AutocompleteCtrl ]);
 
+	// service
 	autocomplete.factory('wordsSource', function($http) {
+		var getWords = function(url) {
+			return $http.get(url)
+			            .then(function(response) {
+			            	return response.data;
+			            });
+		};
+		
 		return {
-			get : function(url) {
-				return $http.get(url).then(function(response) {
-					return response.data;
-				});
-			}
+			getWords: getWords
 		};
 	});
 
-})();
+}());
