@@ -2,10 +2,10 @@ package ru.kontur.kontest.collections;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import ru.kontur.kontest.words.WordWithFrequency;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import ru.kontur.kontest.words.WordWithFrequency;
 
 public class FixedSizeSortedListTest {
 

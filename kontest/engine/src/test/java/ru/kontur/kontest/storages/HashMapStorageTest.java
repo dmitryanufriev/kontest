@@ -2,11 +2,11 @@ package ru.kontur.kontest.storages;
 
 import static org.junit.Assert.assertArrayEquals;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import ru.kontur.kontest.words.Prefix;
 import ru.kontur.kontest.words.WordWithFrequency;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Collection;
 

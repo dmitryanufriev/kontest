@@ -2,9 +2,9 @@ package ru.kontur.kontest.io;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import ru.kontur.kontest.words.WordWithFrequency;
+
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
