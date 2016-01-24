@@ -10,27 +10,29 @@ import java.util.HashMap;
 
 /**
  * Хранилище слов с частотами на основе {@link HashMap}
+ * 
  * @author Дмитрий Ануфриев
  */
 public class HashMapStorage implements Storage {
 
   /**
    * Конструктор
+   * 
    * @param countOfWordsForPrefix Количество хранимых слов по каждому префиксу
    */
   public HashMapStorage(int countOfWordsForPrefix) {
-    storage = new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>();
-    this.countOfWordsForPrefix = countOfWordsForPrefix;
+    this(new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>(), countOfWordsForPrefix);
   }
 
   /**
    * Конструктор
+   * 
    * @param storageSize Размер хранилища
    * @param countOfWordsForPrefix Количество хранимых слов по каждому префиксу
    */
   public HashMapStorage(int storageSize, int countOfWordsForPrefix) {
-    storage = new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>(storageSize);
-    this.countOfWordsForPrefix = countOfWordsForPrefix;
+    this(new HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>>(storageSize),
+        countOfWordsForPrefix);
   }
 
   @Override
@@ -56,4 +58,10 @@ public class HashMapStorage implements Storage {
   
   private final HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>> storage;
   private final int countOfWordsForPrefix;
+  
+  private HashMapStorage(HashMap<Prefix, FixedSizeSortedList<WordWithFrequency>> storage,
+      int countOfWordsForPrefix) {
+    this.storage = storage;
+    this.countOfWordsForPrefix = countOfWordsForPrefix;
+  }
 }

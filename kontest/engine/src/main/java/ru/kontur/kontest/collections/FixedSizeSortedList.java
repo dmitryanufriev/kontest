@@ -6,16 +6,17 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Коллекция на фиксированное количество элементов.
- * Обеспечивает хранение элементов в отсортированном порядке.
+ * Коллекция на фиксированное количество элементов. Обеспечивает хранение элементов в
+ * отсортированном порядке.
+ * 
  * @author Дмитрий Ануфриев
- *
  * @param <T> Тип элементов коллекции
  */
 public class FixedSizeSortedList<T> {
 
   /**
    * Конструктор
+   * 
    * @param size Максимально допустимое количество элементов в коллекции.
    */
   public FixedSizeSortedList(int size) {
@@ -25,6 +26,7 @@ public class FixedSizeSortedList<T> {
 
   /**
    * Добавить элемент в коллекцию
+   * 
    * @param item Элемент коллекции
    */
   public void add(T item) {
@@ -36,6 +38,7 @@ public class FixedSizeSortedList<T> {
 
   /**
    * Вернуть содержимое коллекции в виде {@link Collection}
+   * 
    * @return Объект, реализующий {@link Collection<T>}
    */
   public Collection<T> asCollection() {
@@ -44,13 +47,14 @@ public class FixedSizeSortedList<T> {
 
   /**
    * Вернуть содержимое коллекции в виде массива
+   * 
    * @param a Тип массива
    * @return {@link Array}
    */
   public T[] toArray(T[] a) {
     return asCollection().toArray(a);
   }
-
+  
   private final SortedSet<T> sortedSet;
   private final int size;
 }

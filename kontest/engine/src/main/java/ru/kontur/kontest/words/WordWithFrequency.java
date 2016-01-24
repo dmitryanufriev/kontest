@@ -2,12 +2,14 @@ package ru.kontur.kontest.words;
 
 /**
  * Слово с частотой
+ * 
  * @author Дмитрий Ануфриев
  */
 public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
   /**
    * Конструктор
+   * 
    * @param word Слово
    * @param frequency Частота повторения
    */
@@ -18,6 +20,7 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
 
   /**
    * Получить префиксы слова
+   * 
    * @return Массив {@link Prefix}
    */
   public Prefix[] getPrefixes() {
@@ -26,10 +29,10 @@ public class WordWithFrequency implements Comparable<WordWithFrequency> {
     for (int i = 1; i <= prefixesCount; i++) {
       prefixes[i - 1] = new Prefix(word.substring(0, i));
     }
-    
+
     return prefixes;
   }
-  
+
   public int compareTo(WordWithFrequency wordWithFrequency) {
     int frequenciesComparisonResult = wordWithFrequency.frequency - frequency;
 

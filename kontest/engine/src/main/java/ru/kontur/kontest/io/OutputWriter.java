@@ -9,32 +9,44 @@ import java.io.OutputStreamWriter;
 
 /**
  * Класс для записи частотных слов в <code>outputStream</code>
+ * 
  * @author Дмитрий Ануфриев
- *
  */
 public class OutputWriter {
 
   /**
    * Записать слова в <code>outputStream</code>
+   * 
    * @param words Итерируемый набор {@link WordWithFrequency}
-   * @param outputStream Выходной поток
+   * @param stream Выходной поток
    * @throws IOException Ошибка ввода/вывода
    */
-  public void writeWordsToStream(Iterable<WordWithFrequency> words, OutputStream outputStream)
+  public void writeWordsToStream(Iterable<WordWithFrequency> words, OutputStream stream)
       throws IOException {
-    StringBuilder stringBuilder = new StringBuilder();
+    toStream(stream, getSingleLineFrom(words));
+  }
+
+  private static String getSingleLineFrom(Iterable<WordWithFrequency> words) {
+    StringBuilder builder = new StringBuilder();
     for (WordWithFrequency word : words) {
-      stringBuilder.append(word);
-      stringBuilder.append("\n");
+      builder.append(word).append("\n");
+    }
+    
+    if (builder.length() > 0) {
+      builder.append("\n");
+    }
+    
+    return builder.toString();
+  }
+
+  private static void toStream(OutputStream stream, String words) throws IOException {
+    if (words.length() < 1) {
+      return;
     }
 
-    if (stringBuilder.length() > 0) {
-      stringBuilder.append('\n');
-
-      BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-      bufferedWriter.write(stringBuilder.toString());
-      bufferedWriter.flush();
-
-    }
+    OutputStreamWriter writer = new OutputStreamWriter(stream);
+    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+    bufferedWriter.write(words);
+    bufferedWriter.flush();
   }
 }
