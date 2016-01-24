@@ -9,5 +9,6 @@
         </dependent-module>
         <property name="java-output-path" value="/kontest-web/target/classes"/>
         <property name="context-root" value="kontest-web"/>
+        <property name="component.exclusion.patterns" value="WEB-INF/web.xml"/>
     </wb-module>
 </project-modules>
