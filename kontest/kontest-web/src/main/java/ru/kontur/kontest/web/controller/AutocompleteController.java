@@ -1,16 +1,16 @@
 package ru.kontur.kontest.web.controller;
 
+import ru.kontur.kontest.storages.Storage;
+import ru.kontur.kontest.web.services.StorageService;
+import ru.kontur.kontest.words.Prefix;
+import ru.kontur.kontest.words.WordWithFrequency;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import ru.kontur.kontest.storages.Storage;
-import ru.kontur.kontest.web.services.StorageService;
-import ru.kontur.kontest.words.Prefix;
-import ru.kontur.kontest.words.WordWithFrequency;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,14 +20,14 @@ import java.util.Collection;
 public class AutocompleteController {
 
   @RequestMapping(value = "", method = RequestMethod.GET)
-  public @ResponseBody
-  String[] noPrefix() {
+  @ResponseBody
+  public String[] noPrefix() {
     return new String[0];
   }
 
   @RequestMapping(value = "{prefix}", method = RequestMethod.GET)
-  public @ResponseBody
-  String[] findWordsByPrefix(@PathVariable String prefix) {
+  @ResponseBody
+  public String[] findWordsByPrefix(@PathVariable String prefix) {
     Storage storage = storageService.getStorage();
 
     Collection<WordWithFrequency> foundWords = storage.searchWordsBy(new Prefix(prefix));
@@ -39,7 +39,6 @@ public class AutocompleteController {
 
     return words.toArray(new String[0]);
   }
-  
-  @Autowired
-  private StorageService storageService;
+
+  @Autowired private StorageService storageService;
 }

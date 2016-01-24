@@ -1,9 +1,9 @@
 package ru.kontur.kontest.web.configuration;
 
+import ru.kontur.kontest.web.services.StorageService;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import ru.kontur.kontest.web.services.StorageService;
 
 @Configuration
 public class ServicesContext {

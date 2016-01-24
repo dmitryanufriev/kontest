@@ -8,6 +8,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/kontest-web/target/classes"/>
-        <property name="context-root" value="web-${project.artifact.version}"/>
+        <property name="context-root" value="kontest-web"/>
     </wb-module>
 </project-modules>
