@@ -11,12 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ApplicationIT {
-
-  @Rule
-  public Timeout tenSeconds = new Timeout(10000);
-
+  
   private static final String FILE_NAME = "test.in";
   private InputStream in;
+
+  @Rule public Timeout tenSeconds = new Timeout(10000);
 
   @Before
   public void setUp() {

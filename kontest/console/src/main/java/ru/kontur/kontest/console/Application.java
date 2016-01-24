@@ -15,13 +15,16 @@ import java.util.Collection;
 
 /**
  * Точка входа в приложение
+ * 
  * @author Дмитрий Ануфриев
- *
  */
 public class Application {
+ 
+  private static final int WORDS_COUNT = 10;
 
   /**
    * Прочитать тестовые данные из stdin и записать результаты работы в stdout
+   * 
    * @param args Аргументы командной строки
    */
   public static void main(String[] args) {
@@ -34,8 +37,9 @@ public class Application {
   }
 
   /**
-   * Прочитать тестовые данные из <code>inputStream</code> и вывести слова,
-   * соответствующие префиксам в <code>outputStream</code>
+   * Прочитать тестовые данные из <code>inputStream</code> и вывести слова, соответствующие
+   * префиксам в <code>outputStream</code>
+   * 
    * @param inputStream Поток с входными данными
    * @param outputStream Поток для выходных данных
    * @throws IOException Ошибка ввода/вывода
@@ -45,14 +49,10 @@ public class Application {
     inputReader.readFrom(inputStream, new TestDataListener() {
       private final OutputWriter outputWriter = new OutputWriter();
       private Storage storage;
-
+      
       @Override
       public void wordsCount(int count) {
         storage = new HashMapStorage(count, WORDS_COUNT);
-      }
-
-      @Override
-      public void prefixesCount(int count) {
       }
 
       @Override
@@ -60,6 +60,9 @@ public class Application {
         storage.put(wordWithFrequency);
       }
 
+      @Override
+      public void prefixesCount(int count) {}
+      
       @Override
       public void nextPrefix(Prefix prefix) {
         Collection<WordWithFrequency> foundWords = storage.searchWordsBy(prefix);
@@ -71,6 +74,4 @@ public class Application {
       }
     });
   }
-  
-  private static final int WORDS_COUNT = 10;
 }
